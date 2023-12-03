@@ -10,5 +10,5 @@ $profileLine=". ""`$(`$HOME)/.pwsh-prompt/prompt.ps1"""
 
 $installed = "$(Get-Content $profile)".Contains("$profileLine") 2>$null
 if(! $installed) {
-    "`n# pwsh-prompt`n$profileLine`n`n" | Add-Content $profile
+    "`n# pwsh-prompt`n$profileLine`n`n" | Add-Content "$profile"
 }
