@@ -8,6 +8,7 @@ Invoke-WebRequest "$downloadUrl" -OutFile "$installDir/prompt.ps1"
 
 $profileLine=". ""`$(`$HOME)/.pwsh-prompt/prompt.ps1"""
 
-if(! (Get-Content $profile).Contains("$profileLine") ) {
-    "`n# pwsh-prompt`n$profileLine" | Add-Content $profile
+$installed = "$(Get-Content $profile)".Contains("$profileLine") 2>$null
+if(! $installed) {
+    "`n# pwsh-prompt`n$profileLine`n`n" | Add-Content $profile
 }
